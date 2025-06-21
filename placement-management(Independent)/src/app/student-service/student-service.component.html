@@ -1,0 +1,98 @@
+<div class="form-container">
+  <h2>{{ student.id ? 'Edit Student' : 'Add Student' }}</h2>
+
+  <form (ngSubmit)="saveStudent()">
+    <label>Name:</label>
+    <input
+      [(ngModel)]="student.name"
+      name="name"
+      placeholder="Name"
+      required
+    />
+
+    <label>Roll No:</label>
+    <input
+      [(ngModel)]="student.roll"
+      name="roll"
+      placeholder="Roll No"
+      required
+      type="number"
+    />
+
+    <label>Qualification:</label>
+    <input
+      [(ngModel)]="student.qualification"
+      name="qualification"
+      placeholder="Qualification"
+      required
+    />
+
+    <label>Course:</label>
+    <input
+      [(ngModel)]="student.course"
+      name="course"
+      placeholder="Course"
+      required
+    />
+
+    <label>Hall Ticket No:</label>
+    <input
+      [(ngModel)]="student.hallTicketNo"
+      name="hallTicketNo"
+      placeholder="Hall Ticket No"
+      required
+      type="number"
+    />
+
+    <label>Year:</label>
+    <input
+      [(ngModel)]="student.year"
+      name="year"
+      placeholder="Year"
+      required
+      type="number"
+    />
+
+    <div class="button-group">
+      <button type="submit">
+        {{ student.id ? 'Update' : 'Add' }} Student
+      </button>
+      <button type="button" (click)="resetForm()">Reset</button>
+    </div>
+  </form>
+</div>
+
+<hr />
+
+<div class="table-container">
+  <h3>Student Records</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Qualification</th>
+        <th>Course</th>
+        <th>Hall Ticket No</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td>{{ s.id }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.roll }}</td>
+        <td>{{ s.qualification }}</td>
+        <td>{{ s.course }}</td>
+        <td>{{ s.hallTicketNo }}</td>
+        <td>{{ s.year }}</td>
+        <td>
+          <button class="edit-btn" (click)="editStudent(s)">Edit</button>
+          <button class="delete-btn" (click)="deleteStudent(s.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

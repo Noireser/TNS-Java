@@ -1,0 +1,88 @@
+/* Card Styling */
+.card {
+  background-color: #000;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Headings */
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffc107;
+  margin: 20px 0 10px;
+}
+
+/* Form Row */
+.form-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-row input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  flex: 1 1 200px;
+}
+
+.form-row button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.form-row button:hover {
+  background-color: #0056b3;
+}
+
+/* Welcome / Logout */
+.welcome-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c62828;
+}
+
+/* Messages */
+.error-msg {
+  color: #f44336;
+  margin-top: 5px;
+}
+
+.info-msg {
+  color: #4caf50;
+  margin-top: 5px;
+}
+
+/* Optional: body background if not already global */
+body {
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+  margin: 0;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}

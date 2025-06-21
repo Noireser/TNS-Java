@@ -1,0 +1,55 @@
+<!-- Certificate Form Card -->
+<div class="form-container">
+  <h2>{{ isEdit ? 'Edit Certificate' : 'Add Certificate' }}</h2>
+  <form (ngSubmit)="submitCertificate()">
+    <label>Name:</label>
+    <input 
+      [(ngModel)]="certificate.name" 
+      name="name" 
+      placeholder="Certificate Name" 
+      required 
+    />
+
+    <label>Year:</label>
+    <input 
+      type="number" 
+      [(ngModel)]="certificate.year" 
+      name="year" 
+      placeholder="Year" 
+      required 
+    />
+
+    <div class="button-group">
+      <button type="submit">{{ isEdit ? 'Update' : 'Add' }}</button>
+      <button type="button" (click)="resetForm()">Clear</button>
+    </div>
+  </form>
+</div>
+
+<hr />
+
+<!-- Certificate Table Card -->
+<div class="table-container">
+  <h3>Certificates</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cert of certificates">
+        <td>{{ cert.id }}</td>
+        <td>{{ cert.name }}</td>
+        <td>{{ cert.year }}</td>
+        <td>
+          <button class="edit-btn" (click)="editCertificate(cert)">Edit</button>
+          <button class="delete-btn" (click)="deleteCertificate(cert.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

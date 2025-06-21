@@ -1,0 +1,63 @@
+<!-- User Form Card -->
+<div class="form-card">
+  <h2 class="form-title">Add New User</h2>
+  <div class="form-row">
+    <input type="text" [(ngModel)]="newUser.name" placeholder="Name" />
+    <input type="password" [(ngModel)]="newUser.password" placeholder="Password" />
+    <select [(ngModel)]="newUser.type">
+      <option value="admin">Admin</option>
+      <option value="college">College</option>
+      <option value="corporate">Corporate</option>
+    </select>
+    <button (click)="addUser()">Add User</button>
+  </div>
+</div>
+
+<!-- User Table -->
+<div class="table-card">
+  <h2 class="table-title">All Users</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Type</th>
+        <th>Approved</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <ng-container *ngIf="editingUser?.id !== user.id">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.type }}</td>
+          <td>{{ user.approved }}</td>
+          <td>
+            <button (click)="startEdit(user)">✏️</button>
+            <button (click)="deleteUser(user.id)">🗑️</button>
+          </td>
+        </ng-container>
+        <ng-container *ngIf="editingUser?.id === user.id">
+          <td>{{ editingUser.id }}</td>
+          <td><input [(ngModel)]="editingUser.name" /></td>
+          <td><input [(ngModel)]="editingUser.password" type="password" /></td>
+          <td>
+            <select [(ngModel)]="editingUser.type">
+              <option value="admin">Admin</option>
+              <option value="college">College</option>
+              <option value="corporate">Corporate</option>
+            </select>
+          </td>
+          <td>{{ editingUser.approved }}</td>
+          <td>
+            <button (click)="updateUser()">💾</button>
+            <button (click)="cancelEdit()">❌</button>
+          </td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>

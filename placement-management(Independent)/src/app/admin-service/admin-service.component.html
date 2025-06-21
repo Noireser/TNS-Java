@@ -1,0 +1,73 @@
+<div class="card">
+  <!-- If not logged in: show Login Form -->
+  <ng-container *ngIf="!currentAdmin">
+    <h2 class="card-title">Admin Login</h2>
+    <form (ngSubmit)="login()" class="form-row">
+      <input
+        type="text"
+        [(ngModel)]="loginData.name"
+        name="loginName"
+        placeholder="Admin Name"
+        required
+      />
+      <input
+        type="password"
+        [(ngModel)]="loginData.password"
+        name="loginPassword"
+        placeholder="Password"
+        required
+      />
+      <button type="submit">🔐 Login</button>
+    </form>
+    <div *ngIf="loginError" class="error-msg">{{ loginError }}</div>
+  </ng-container>
+
+  <!-- If logged in: show profile update and add-new-admin forms -->
+  <ng-container *ngIf="currentAdmin">
+    <div class="welcome-row">
+      <span>Welcome, <strong>{{ currentAdmin.name }}</strong></span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+
+    <!-- Update Current Admin -->
+    <h2 class="card-title">Update Your Profile</h2>
+    <form (ngSubmit)="updateCurrentAdmin()" class="form-row">
+      <input
+        type="text"
+        [(ngModel)]="editAdminData.name"
+        name="editName"
+        placeholder="New Name"
+        required
+      />
+      <input
+        type="password"
+        [(ngModel)]="editAdminData.password"
+        name="editPassword"
+        placeholder="New Password"
+        required
+      />
+      <button type="submit">💾 Update</button>
+    </form>
+
+    <!-- Add New Admin -->
+    <h2 class="card-title">Add New Admin</h2>
+    <form (ngSubmit)="addAdmin()" class="form-row">
+      <input
+        type="text"
+        [(ngModel)]="newAdmin.name"
+        name="newAdminName"
+        placeholder="Admin Name"
+        required
+      />
+      <input
+        type="password"
+        [(ngModel)]="newAdmin.password"
+        name="newAdminPassword"
+        placeholder="Password"
+        required
+      />
+      <button type="submit">➕ Add Admin</button>
+    </form>
+    <div *ngIf="addAdminMessage" class="info-msg">{{ addAdminMessage }}</div>
+  </ng-container>
+</div>

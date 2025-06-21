@@ -1,0 +1,62 @@
+<div class="form-container">
+  <h2>{{ student.id ? 'Edit Student' : 'Add Student' }}</h2>
+
+  <form (ngSubmit)="saveStudent()">
+    <input [(ngModel)]="student.name" name="name" placeholder="Name" required />
+    <input [(ngModel)]="student.roll" name="roll" placeholder="Roll No" required type="number" />
+    <input [(ngModel)]="student.qualification" name="qualification" placeholder="Qualification" required />
+    <input [(ngModel)]="student.course" name="course" placeholder="Course" required />
+    <input [(ngModel)]="student.hallTicketNo" name="hallTicketNo" placeholder="Hall Ticket No" required type="number" />
+    <input [(ngModel)]="student.year" name="year" placeholder="Year" required type="number" />
+
+    <select [(ngModel)]="student.college" name="college" required>
+      <option [ngValue]="null" disabled selected>Select College</option>
+      <option *ngFor="let c of colleges" [ngValue]="c">{{ c.collegeName }}</option>
+    </select>
+
+    <select [(ngModel)]="student.certificate" name="certificate" required>
+      <option [ngValue]="null" disabled selected>Select Certificate</option>
+      <option *ngFor="let cert of certificates" [ngValue]="cert">{{ cert.name }}</option>
+    </select>
+
+    <div class="button-group">
+      <button type="submit">{{ student.id ? 'Update' : 'Add' }} Student</button>
+      <button type="button" (click)="resetForm()">Reset</button>
+    </div>
+  </form>
+</div>
+
+<hr />
+
+<div class="table-container">
+  <h3>Student Records</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Course</th>
+        <th>Year</th>
+        <th>College</th>
+        <th>Certificate</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td>{{ s.id }}</td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.roll }}</td>
+        <td>{{ s.course }}</td>
+        <td>{{ s.year }}</td>
+        <td>{{ s.college?.collegeName || 'N/A' }}</td>
+        <td>{{ s.certificate?.name || 'N/A' }}</td>
+        <td>
+          <button class="edit-btn" (click)="editStudent(s)">Edit</button>
+          <button class="delete-btn" (click)="deleteStudent(s.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,105 @@
+/* Card Style Form */
+.form-card {
+  background-color: #0a0606;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-row input,
+.form-row select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  flex: 1 1 200px;
+}
+
+.form-row button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-row button:hover {
+  background-color: #0056b3;
+}
+
+/* Table Card Style */
+.table-card {
+  background-color: #000;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.table-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #ffc107;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #121212;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #1a1a1a;
+}
+
+thead th {
+  padding: 12px;
+  color: yellow;
+  border-bottom: 1px solid #333;
+}
+
+tbody td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #222;
+}
+
+tbody tr:hover {
+  background-color: #1f1f1f;
+}
+
+button {
+  font-size: 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+}
+
+button:hover {
+  color: #ffc107;
+}
+
+input,
+select {
+  background-color: #fff;
+  color: #000;
+}

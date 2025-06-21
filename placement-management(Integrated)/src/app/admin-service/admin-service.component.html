@@ -1,0 +1,63 @@
+<!-- Add Admin Form -->
+<div class="card">
+  <h2 class="card-title">Add Admin</h2>
+  <form (ngSubmit)="addAdmin()" class="form-row">
+    <input [(ngModel)]="newAdmin.name" name="adminName" placeholder="Admin Name" required>
+    <input [(ngModel)]="newAdmin.password" name="adminPassword" placeholder="Password" type="password" required>
+    <button type="submit">➕ Add Admin</button>
+  </form>
+</div>
+
+<!-- College Approval Table -->
+<div class="card">
+  <h2 class="card-title">All Colleges</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let college of colleges">
+        <td>{{ college.id }}</td>
+        <td>{{ college.collegeName }}</td>
+        <td>{{ college.approved ? '✅ Approved' : '❌ Not Approved' }}</td>
+        <td>
+          <button (click)="approveCollege(college)">✔️ Approve</button>
+          <button (click)="rejectCollege(college)">❌ Reject</button>
+          <button (click)="deleteCollege(college.id)">🗑️ Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- User Approval Table -->
+<div class="card">
+  <h2 class="card-title">All Users</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.approved ? '✅ Approved' : '❌ Not Approved' }}</td>
+        <td>
+          <button (click)="approveUser(user.id)">✔️ Approve</button>
+          <button (click)="rejectUser(user)">❌ Reject</button>
+          <button (click)="deleteUser(user.id)">🗑️ Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

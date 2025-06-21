@@ -1,0 +1,51 @@
+<div class="form-container">
+  <h2>{{ isEdit ? 'Edit Certificate' : 'Add Certificate' }}</h2>
+
+  <form (ngSubmit)="submitCertificate()">
+    <label>Name:</label>
+    <input [(ngModel)]="certificate.name" name="name" required />
+
+    <label>Year:</label>
+    <input type="number" [(ngModel)]="certificate.year" name="year" required />
+
+    <label>College:</label>
+    <select [(ngModel)]="certificate.collegeId" name="collegeId" required>
+      <option value="" disabled selected>Select a college</option>
+      <option *ngFor="let college of colleges" [value]="college.id">{{ college.collegeName }}</option>
+    </select>
+
+    <div class="button-group">
+      <button type="submit">{{ isEdit ? 'Update' : 'Add' }}</button>
+      <button type="button" (click)="resetForm()">Clear</button>
+    </div>
+  </form>
+</div>
+
+<hr />
+
+<div class="table-container">
+  <h3>Certificates</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Year</th>
+        <th>College</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cert of certificates">
+        <td>{{ cert.id }}</td>
+        <td>{{ cert.name }}</td>
+        <td>{{ cert.year }}</td>
+        <td>{{ getCollegeNameById(cert.college?.id) }}</td>
+        <td>
+          <button class="edit-btn" (click)="editCertificate(cert)">Edit</button>
+          <button class="delete-btn" (click)="deleteCertificate(cert.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
